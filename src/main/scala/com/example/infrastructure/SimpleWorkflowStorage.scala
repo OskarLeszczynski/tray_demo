@@ -1,8 +1,11 @@
-package com.example.workflow
+package com.example.infrastructure
 
+import com.example.domain.workflow.{Workflow, WorkflowStorage}
 import scala.collection.concurrent.TrieMap
 
-class WorkflowStorage {
+
+
+class SimpleWorkflowStorage extends WorkflowStorage{
     private val workflowMap: TrieMap[String, Workflow] = new TrieMap[String, Workflow]()
 
     def tryToSave(workflow: Workflow): Boolean = {

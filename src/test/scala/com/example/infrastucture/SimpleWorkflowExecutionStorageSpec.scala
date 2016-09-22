@@ -1,13 +1,15 @@
-package com.example.workflow.execution
+package com.example.infrastucture
 
 import java.time.Instant
 
+import com.example.domain.execution.WorkflowExecution
+import com.example.infrastructure.SimpleWorkflowExecutionStorage
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
 
-class WorkflowExecutionStorageSpec extends Specification {
+class SimpleWorkflowExecutionStorageSpec extends Specification {
 
-    "WorkflowExecutionStorageSpec" should {
+    "SimpleWorkflowExecutionStorage" should {
         "get stored workflow execution" in new Context {
             // given
             val expectedWorkflowExecution = WorkflowExecution("some_test_id", "workflow_id", 0, 5, Instant.now())
@@ -62,6 +64,6 @@ class WorkflowExecutionStorageSpec extends Specification {
     }
 
     trait Context extends Scope {
-        val workflowExecutionStorage = new WorkflowExecutionStorage
+        val workflowExecutionStorage = new SimpleWorkflowExecutionStorage
     }
 }

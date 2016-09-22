@@ -1,6 +1,6 @@
 package com.example
 
-import com.example.workflow.WorkflowFacade
+import com.example.domain.WorkflowFacade
 
 class Cleaner(val workflowFacade: WorkflowFacade) extends Runnable {
 

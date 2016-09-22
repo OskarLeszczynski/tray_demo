@@ -7,7 +7,8 @@ import akka.io.IO
 import spray.can.Http
 import akka.pattern.ask
 import akka.util.Timeout
-import com.example.workflow.WorkflowFacade
+import com.example.infrastructure.Storage
+import com.example.domain.{IdGenerator, WorkflowFacade}
 
 import scala.concurrent.duration._
 

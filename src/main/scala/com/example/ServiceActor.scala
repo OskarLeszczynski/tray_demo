@@ -2,8 +2,9 @@ package com.example
 
 import akka.actor.Actor
 import spray.http._
-import com.example.workflow.{WorkflowCreationService, WorkflowFacade}
-import com.example.workflow.execution.{WorkflowExecutionCompleteService, WorkflowExecutionCreationService, WorkflowExecutionIncrementService}
+import com.example.domain.WorkflowFacade
+import com.example.domain.execution.{WorkflowExecutionCompleteService, WorkflowExecutionCreationService, WorkflowExecutionIncrementService}
+import com.example.domain.workflow.WorkflowCreationService
 
 class ServiceActor(facade: WorkflowFacade) extends Actor
     with WorkflowCreationService

@@ -1,13 +1,13 @@
-package com.example.workflow
+package com.example.domain.workflow
 
-import org.mockito.Matchers.anyInt
+import com.example.domain.WorkflowFacade
+import org.specs2.matcher.JsonMatchers
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
 import spray.http.StatusCodes._
 import spray.http._
 import spray.testkit.Specs2RouteTest
-import org.specs2.matcher.JsonMatchers
 
 class WorkflowCreationServiceSpec extends Specification with Specs2RouteTest {
 

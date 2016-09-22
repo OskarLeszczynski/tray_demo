@@ -1,9 +1,14 @@
-package com.example.workflow.execution
+package com.example.infrastructure
 
 import java.time.Instant
+
+import com.example.domain.execution.{WorkflowExecution, WorkflowExecutionStorage}
+
 import scala.collection.concurrent.TrieMap
 
-class WorkflowExecutionStorage {
+
+
+class SimpleWorkflowExecutionStorage extends WorkflowExecutionStorage {
     private val executionMap: TrieMap[String, WorkflowExecution] = new TrieMap[String, WorkflowExecution]()
 
     def tryToSave(workflowExecution: WorkflowExecution): Boolean = {

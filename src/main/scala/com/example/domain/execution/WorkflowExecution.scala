@@ -1,4 +1,4 @@
-package com.example.workflow.execution
+package com.example.domain.execution
 
 import java.time.Instant
 

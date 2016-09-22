@@ -1,9 +1,9 @@
-package com.example.workflow
+package com.example.domain
 
 import java.time.{Duration, Instant}
 
-import com.example.IdGenerator
-import com.example.workflow.execution.{WorkflowExecution, WorkflowExecutionStorage}
+import com.example.domain.execution.{WorkflowExecution, WorkflowExecutionStorage}
+import com.example.domain.workflow.{Workflow, WorkflowStorage}
 
 class WorkflowFacade(workflowStorage: WorkflowStorage,
                      workflowExecutionStorage: WorkflowExecutionStorage,
@@ -54,7 +54,7 @@ class WorkflowFacade(workflowStorage: WorkflowStorage,
     def incrementExecution(workflowId: String, executionId: String): Option[Boolean] = {
         val maybeWorkflow = workflowStorage.get(workflowId)
 
-        val maybeIncrementationResult: Option[Boolean] = maybeWorkflow.flatMap { workflow =>
+        val maybeIncrementationResult = maybeWorkflow.flatMap { workflow =>
             workflowExecutionStorage.get(executionId).map(incrementStepAndStoreExecution(_))
         }
 
@@ -70,10 +70,10 @@ class WorkflowFacade(workflowStorage: WorkflowStorage,
     def isExecutionCompleted(workflowId: String, executionId: String): Option[Boolean] = {
         val maybeWorkflow = workflowStorage.get(workflowId)
 
-        val completed: Option[Boolean] = maybeWorkflow.flatMap { workflow =>
+        val maybeCompleted = maybeWorkflow.flatMap { workflow =>
             workflowExecutionStorage.get(executionId).map(_.isCompleted)
         }
 
-        completed
+        maybeCompleted
     }
 }

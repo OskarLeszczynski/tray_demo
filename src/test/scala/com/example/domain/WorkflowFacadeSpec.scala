@@ -1,9 +1,10 @@
-package com.example.workflow
+package com.example.domain
 
 import java.time.{Duration, Instant}
 
-import com.example.IdGenerator
-import com.example.workflow.execution.{WorkflowExecution, WorkflowExecutionStorage}
+import com.example.infrastructure.{SimpleWorkflowExecutionStorage, SimpleWorkflowStorage}
+import com.example.domain.execution.WorkflowExecution
+import com.example.domain.workflow.Workflow
 import org.specs2.mock._
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
@@ -190,8 +191,8 @@ class WorkflowFacadeSpec extends Specification {
     }
 
     trait Context extends BaseContext {
-        val workflowStorage = new WorkflowStorage
-        val workflowExecutionStorage = new WorkflowExecutionStorage
+        val workflowStorage = new SimpleWorkflowStorage
+        val workflowExecutionStorage = new SimpleWorkflowExecutionStorage
         val workflowFacade = new WorkflowFacade(workflowStorage, workflowExecutionStorage, idGenerator)
     }
 }

@@ -1,11 +1,13 @@
-package com.example.workflow
+package com.example.infrastucture
 
+import com.example.domain.workflow.Workflow
+import com.example.infrastructure.SimpleWorkflowStorage
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
 
-class WorkflowStorageSpec extends Specification {
+class SimpleWorkflowStorageSpec extends Specification {
 
-    "WorkflowStorageSpec" should {
+    "SimpleWorkflowStorage" should {
         "get stored workflow" in new Context {
             // given
             val expectedWorkflow = Workflow("some_test_id", 5)
@@ -45,6 +47,6 @@ class WorkflowStorageSpec extends Specification {
     }
 
     trait Context extends Scope {
-        val workflowStorage = new WorkflowStorage
+        val workflowStorage = new SimpleWorkflowStorage
     }
 }

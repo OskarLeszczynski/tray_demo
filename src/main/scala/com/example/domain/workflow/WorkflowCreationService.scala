@@ -1,11 +1,11 @@
-package com.example.workflow
+package com.example.domain.workflow
 
+import com.example.domain.WorkflowFacade
 import spray.http.MediaTypes._
 import spray.http._
-import spray.routing._
 import spray.httpx.SprayJsonSupport
 import spray.json.DefaultJsonProtocol
-
+import spray.routing._
 
 trait WorkflowCreationService extends HttpService  with DefaultJsonProtocol with SprayJsonSupport {
     val workflowFacade: WorkflowFacade

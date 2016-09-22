@@ -1,13 +1,12 @@
-package com.example.workflow.execution
+package com.example.domain.execution
 
-import com.example.workflow.{WorkflowCreationService, WorkflowFacade}
+import com.example.domain.WorkflowFacade
 import org.specs2.matcher.JsonMatchers
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
-import spray.http.{ContentTypes, HttpEntity, StatusCodes}
+import spray.http.StatusCodes
 import spray.testkit.Specs2RouteTest
-import org.mockito.Matchers.anyString
 
 class WorkflowExecutionServiceSpec extends Specification with Specs2RouteTest {
 

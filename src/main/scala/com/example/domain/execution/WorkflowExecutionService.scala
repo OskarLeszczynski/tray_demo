@@ -1,6 +1,6 @@
-package com.example.workflow.execution
+package com.example.domain.execution
 
-import com.example.workflow.WorkflowFacade
+import com.example.domain.WorkflowFacade
 import spray.http.MediaTypes._
 import spray.http.StatusCodes._
 import spray.routing.HttpService

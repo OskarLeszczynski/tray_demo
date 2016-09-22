@@ -1,8 +1,9 @@
 package com.example.integration
 
-import com.example.IdGenerator
-import com.example.workflow.{WorkflowCreationService, WorkflowFacade, WorkflowStorage}
-import com.example.workflow.execution.{WorkflowExecutionCompleteService, WorkflowExecutionCreationService, WorkflowExecutionIncrementService, WorkflowExecutionStorage}
+import com.example.infrastructure.{SimpleWorkflowExecutionStorage, SimpleWorkflowStorage}
+import com.example.domain.{IdGenerator, WorkflowFacade}
+import com.example.domain.execution.{WorkflowExecutionCompleteService, WorkflowExecutionCreationService, WorkflowExecutionIncrementService}
+import com.example.domain.workflow.WorkflowCreationService
 import org.specs2.matcher.JsonMatchers
 import org.specs2.mutable.Specification
 import org.specs2.specification.Scope
@@ -46,8 +47,6 @@ class WorkflowServiceAcceptanceSpec extends Specification with Specs2RouteTest {
         with WorkflowExecutionIncrementService
         with WorkflowExecutionCompleteService {
         def actorRefFactory = system
-        override val workflowFacade = new WorkflowFacade(new WorkflowStorage, new WorkflowExecutionStorage, new IdGenerator)
-        val generatedId = "some_id"
-
+        override val workflowFacade = new WorkflowFacade(new SimpleWorkflowStorage, new SimpleWorkflowExecutionStorage, new IdGenerator)
     }
 }
